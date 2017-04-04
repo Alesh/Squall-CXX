@@ -122,7 +122,7 @@ class EventLoop {
         auto found = _io_watchers.find(context);
         if (found != _io_watchers.end()) {
             auto p_watcher = found->second.get();
-            if (_running && ev_is_active(p_watcher))
+            if (ev_is_active(p_watcher))
                 ev_io_stop(_p_loop, p_watcher);
             _io_watchers.erase(found);
             return true;
@@ -154,7 +154,7 @@ class EventLoop {
         auto found = _timer_watchers.find(context);
         if (found != _timer_watchers.end()) {
             auto p_watcher = found->second.get();
-            if (_running && ev_is_active(p_watcher))
+            if (ev_is_active(p_watcher))
                 ev_timer_stop(_p_loop, p_watcher);
             _timer_watchers.erase(found);
             return true;
@@ -187,7 +187,7 @@ class EventLoop {
         auto found = _signal_watchers.find(context);
         if (found != _signal_watchers.end()) {
             auto p_watcher = found->second.get();
-            if (_running && ev_is_active(p_watcher))
+            if (ev_is_active(p_watcher))
                 ev_signal_stop(_p_loop, p_watcher);
             _signal_watchers.erase(found);
             return true;
