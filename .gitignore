@@ -1,3 +1,6 @@
 .*/
 build
 cmake-build-*
+*.egg-info
+python/squall/core_cython.*
+!python/squall/core_cython.pyx
